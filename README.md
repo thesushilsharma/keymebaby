@@ -19,6 +19,21 @@ Sync with Google Authenticator secrets via:
 
 ---
 
+## 🧪 Prerequisites
+
+- VS Code or any Code Editor
+- Node.js installation on your machine
+- npm package manager
+- **Telegram Account** Personal or Bot account (Test bot interaction)                     |
+- **Telegram Bot Token** From [@BotFather](https://t.me/BotFather) ( Authentication for your Telegram bot )
+
+---
+
+## 📦 Tech Stack 
+- TypeScript
+
+---
+
 ## 🛠️ Features  
 - 🤖 Telegram bot interface for easy access  
 - 🧮 Real-time TOTP code generation (30s/60s intervals)  
