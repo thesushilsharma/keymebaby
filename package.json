@@ -1,22 +1,24 @@
 {
   "name": "keymebaby",
-  "description": "TOTP Generator Bot",
-  "version": "1.0.0",
-  "private": true,
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon --watch 'src/**' --ext 'ts,json' --exec 'npm run build && npm run start'",
+    "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "express": "^5.1.0",
-    "grammy": "^1.36.1"
+    "@grammyjs/parse-mode": "^2.2.0",
+    "@hono/node-server": "^1.18.1",
+    "grammy": "^1.37.0",
+    "hono": "^4.8.12",
+    "otpauth": "^9.4.0",
+    "qrcode": "^1.5.4"
   },
   "devDependencies": {
-    "@types/express": "^5.0.1",
-    "@types/node": "^22.15.18",
-    "nodemon": "^3.1.10",
+    "@dotenvx/dotenvx": "^1.48.4",
+    "@types/node": "^20.11.17",
+    "@types/qrcode": "^1.5.5",
+    "tsx": "^4.7.1",
     "typescript": "^5.8.3"
   }
 }
