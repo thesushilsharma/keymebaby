@@ -19,6 +19,58 @@ Sync with Google Authenticator secrets via:
 
 ---
 
+## 🗣️ Talk to Your Bot in Telegram
+
+Send commands to your bot in your chat:
+
+---
+
+### ➕ Add Account
+
+You can either:
+
+**Add manually:**
+```bash
+/add github SUSHILSharma
+```
+
+**Add via URI:**
+```ruby
+/add otpauth://totp/GitHub:your@email.com?secret=SUSHILSHARMA&issuer=GitHub
+```
+
+> **Note:** The secret must be Base32 encoded.
+
+---
+
+### 📜 List Accounts
+```bash
+/list
+```
+
+---
+
+### 🔐 Show TOTP Codes
+```bash
+/code
+```
+
+You’ll get something like:
+```yaml
+🔐 TOTP Codes:
+GitHub: 123456 (⏳ 28s)
+```
+
+---
+
+### 📷 Get QR Code
+```bash
+/qr 1
+```
+*Returns the QR image for the 1st account in your list.*
+
+---
+
 ## 🧪 Prerequisites
 
 - VS Code or any Code Editor
@@ -30,11 +82,15 @@ Sync with Google Authenticator secrets via:
 ---
 
 ## 📦 Tech Stack 
+
 - TypeScript
+- Hono
+- Grammy Js
 
 ---
 
 ## 🛠️ Features  
+
 - 🤖 Telegram bot interface for easy access  
 - 🧮 Real-time TOTP code generation (30s/60s intervals)  
 - 📱 Compatible with standard authenticator apps  
@@ -44,7 +100,8 @@ Sync with Google Authenticator secrets via:
 
 ---
 
-## 📄 License  
+## 📄 License 
+
 MIT License. See [LICENSE](LICENSE) for full text.  
 
 ---

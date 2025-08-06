@@ -5,6 +5,9 @@ import type { Context, SessionFlavor } from "grammy";
 import * as OTPAuth from "otpauth";
 import * as qrcode from "qrcode";
 import { config } from "@dotenvx/dotenvx";
+import { Buffer } from "buffer";
+import { InputFile } from "grammy";
+
 
 config({ path: ".env.local" });
 
@@ -98,7 +101,7 @@ bot.command("code", async (ctx) => {
   await ctx.reply(`${"🔐 TOTP Codes:"}
 ${codes}`);
 });
-
+// /qr
 bot.command("qr", async (ctx) => {
   const parts = ctx.message?.text?.split(" ");
   const idx = parseInt(parts?.[1] ?? "") - 1;
@@ -107,9 +110,18 @@ bot.command("qr", async (ctx) => {
   if (!account)
     return ctx.reply("Invalid index. Use /list to see account numbers.");
 
-  const imageUrl = await qrcode.toDataURL(account.uri);
+  // Create QR as base64 image string
+  const dataUrl = await qrcode.toDataURL(account.uri);
+  // console.log('dataUrl', dataUrl);
+
+  const base64 = dataUrl.split(",")[1]; // Remove the "data:image/png;base64," part
+
+  // Convert to Buffer
+  const buffer = Buffer.from(base64, "base64");
+
+  // Send buffer as photo
   await ctx.replyWithPhoto(
-    { url: imageUrl } as any,
+    new InputFile(buffer),
     { caption: `${account.label} QR Code` }
   );
 });
